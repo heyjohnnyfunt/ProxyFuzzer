@@ -21,12 +21,13 @@ httpHeader.fuzzCookies = function (options) {
     if (cookie === undefined) cookie = rand.randomString(100, "aA#");
     cookie = parseCookie.parse(cookie);
 
-    //console.log(cookie);
+    console.log('========== COOKIE ==========');
+    console.log(cookie);
     for (var key in cookie) {
         if (!cookie.hasOwnProperty(key)) continue;
         cookie[key] = rand.randomString(rand.randBool() ? cookie[key].length : rand.randRange(0, 100000), 'aA#')
     }
-    //console.log(cookie);
+    console.log(cookie);
 
     return options;
 };
@@ -51,7 +52,7 @@ httpHeader.fuzzMainHeaders = function (options) {
     options.headers['connection'] = options.headers['connection'] === 'keep-alive' ? 'close' : 'keep-alive';
 
     /*URI ресурса, после которого клиент сделал текущий запрос.*/
-    options.headers['referer'] = rand.randomString(1000, '!');
+    options.headers['referer'] = 'https://' + rand.randomString(1000, 'aA#!');
 
     /*Доменное имя и порт хоста запрашиваемого ресурса.
      Необходимо для поддержки виртуального хостинга на серверах.*/
@@ -148,7 +149,10 @@ var getParams = function (options) {
             params[key] = rand.randomString(rand.randRange(0, 1000), '#aA!');
     }
 
+    console.log('============ GET ============');
+    console.log(options.query);
     options.query = qs.stringify(params);
+    console.log(options.query);
     options.search = '?' + options.query;
     options.path = options.pathname + options.search;
 
@@ -192,6 +196,7 @@ var formData = function (data) {
         keyCount--;
     }
 
+    console.log('============ POST ============');
     console.log(params);
     data = qs.stringify(params);
     console.log(data);
