@@ -27,7 +27,7 @@ httpHeader.fuzzCookies = function (options) {
         if (!cookie.hasOwnProperty(key)) continue;
         cookie[key] = rand.randomString(rand.randBool() ? cookie[key].length : rand.randRange(0, 100000), 'aA#')
     }
-    console.log(cookie);
+    // console.log(cookie);
 
     return options;
 };
@@ -150,9 +150,9 @@ var getParams = function (options) {
     }
 
     console.log('============ GET ============');
-    console.log(options.query);
+    // console.log(options.query);
     options.query = qs.stringify(params);
-    console.log(options.query);
+    // console.log(options.query);
     options.search = '?' + options.query;
     options.path = options.pathname + options.search;
 
@@ -197,9 +197,9 @@ var formData = function (data) {
     }
 
     console.log('============ POST ============');
-    console.log(params);
+    // console.log(params);
     data = qs.stringify(params);
-    console.log(data);
+    // console.log(data);
     return data;
 };
 
