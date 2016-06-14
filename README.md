@@ -1,6 +1,6 @@
 # ProxyFuzzer
 
-Dummy HTTP fuzzer written in Node.js.
+Dummy HTTP fuzzer written on Node.js.
 
 <h3>Features</h3>
 <p>What can be fuzzed here:</p>
